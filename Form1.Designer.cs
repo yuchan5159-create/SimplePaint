@@ -39,6 +39,9 @@
             btnOpenFile = new Button();
             btnSaveFile = new Button();
             picCanvas = new PictureBox();
+            panelCanvas = new Panel();
+            btnZoomIn = new Button();
+            btnZoomOut = new Button();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
@@ -145,15 +148,42 @@
             btnSaveFile.Text = "저장";
             btnSaveFile.UseVisualStyleBackColor = true;
             // 
+            // panelCanvas
+            // 
+            panelCanvas.AutoScroll = true;
+            panelCanvas.Location = new Point(18, 181);
+            panelCanvas.Name = "panelCanvas";
+            panelCanvas.Size = new Size(758, 258);
+            panelCanvas.TabIndex = 6;
+            // 
             // picCanvas
             // 
             picCanvas.BackColor = Color.White;
             picCanvas.BorderStyle = BorderStyle.FixedSingle;
-            picCanvas.Location = new Point(18, 181);
+            picCanvas.Location = new Point(0, 0);
             picCanvas.Name = "picCanvas";
             picCanvas.Size = new Size(758, 258);
             picCanvas.TabIndex = 6;
             picCanvas.TabStop = false;
+            panelCanvas.Controls.Add(picCanvas);
+            // 
+            // btnZoomIn
+            // 
+            btnZoomIn.Location = new Point(18, 445);
+            btnZoomIn.Name = "btnZoomIn";
+            btnZoomIn.Size = new Size(45, 29);
+            btnZoomIn.TabIndex = 9;
+            btnZoomIn.Text = "+";
+            btnZoomIn.UseVisualStyleBackColor = true;
+            // 
+            // btnZoomOut
+            // 
+            btnZoomOut.Location = new Point(69, 445);
+            btnZoomOut.Name = "btnZoomOut";
+            btnZoomOut.Size = new Size(45, 29);
+            btnZoomOut.TabIndex = 10;
+            btnZoomOut.Text = "-";
+            btnZoomOut.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -189,7 +219,9 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(picCanvas);
+            Controls.Add(panelCanvas);
+            Controls.Add(btnZoomOut);
+            Controls.Add(btnZoomIn);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
             Controls.Add(lblAppName);
@@ -210,9 +242,12 @@
 
         private Label lblAppName;
         private GroupBox groupBox1;
+        private Panel panelCanvas;
         private Button btnCircle;
         private Button btnLine;
         private Button btnRectangle;
+        private Button btnZoomIn;
+        private Button btnZoomOut;
         private ComboBox cmbColor;
         private TrackBar trbLineWidth;
         private Button btnOpenFile;
