@@ -33,7 +33,7 @@
             groupBox1 = new GroupBox();
             btnLine = new Button();
             btnRectangle = new Button();
-            bnCircle = new Button();
+            btnCircle = new Button();
             cmbColor = new ComboBox();
             trbLineWidth = new TrackBar();
             btnOpenFile = new Button();
@@ -63,7 +63,7 @@
             groupBox1.BackColor = SystemColors.ActiveCaptionText;
             groupBox1.Controls.Add(btnLine);
             groupBox1.Controls.Add(btnRectangle);
-            groupBox1.Controls.Add(bnCircle);
+            groupBox1.Controls.Add(btnCircle);
             groupBox1.ForeColor = Color.Orange;
             groupBox1.Location = new Point(12, 53);
             groupBox1.Name = "groupBox1";
@@ -81,7 +81,7 @@
             btnLine.Name = "btnLine";
             btnLine.Size = new Size(84, 81);
             btnLine.TabIndex = 2;
-            btnLine.Text = "원";
+            btnLine.Text = "직선";
             btnLine.TextAlign = ContentAlignment.BottomCenter;
             btnLine.UseVisualStyleBackColor = true;
             // 
@@ -98,17 +98,17 @@
             btnRectangle.UseVisualStyleBackColor = true;
             btnRectangle.Click += btnRectangle_Click;
             // 
-            // bnCircle
+            // btnCircle
             // 
-            bnCircle.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bnCircle.Image = (Image)resources.GetObject("bnCircle.Image");
-            bnCircle.Location = new Point(6, 27);
-            bnCircle.Name = "bnCircle";
-            bnCircle.Size = new Size(81, 77);
-            bnCircle.TabIndex = 4;
-            bnCircle.Text = "직선";
-            bnCircle.TextAlign = ContentAlignment.BottomCenter;
-            bnCircle.UseVisualStyleBackColor = true;
+            btnCircle.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCircle.Image = (Image)resources.GetObject("btnCircle.Image");
+            btnCircle.Location = new Point(6, 27);
+            btnCircle.Name = "btnCircle";
+            btnCircle.Size = new Size(81, 77);
+            btnCircle.TabIndex = 4;
+            btnCircle.Text = "원";
+            btnCircle.TextAlign = ContentAlignment.BottomCenter;
+            btnCircle.UseVisualStyleBackColor = true;
             // 
             // cmbColor
             // 
@@ -210,7 +210,7 @@
 
         private Label lblAppName;
         private GroupBox groupBox1;
-        private Button bnCircle;
+        private Button btnCircle;
         private Button btnLine;
         private Button btnRectangle;
         private ComboBox cmbColor;
