@@ -4,6 +4,7 @@ namespace SimplePaint
     using System.Drawing;
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
+    using System.IO;
     using System.Drawing.Printing;
     using System.Windows.Forms;
 
@@ -43,6 +44,7 @@ namespace SimplePaint
             btnLine.Click+= btnLine_Click;
             btnRectangle.Click+= btnRectangle_Click;
             btnCircle.Click+= btnCircle_Click;
+            btnSaveFile.Click += btnSaveFile_Click;
 
             cmbColor.SelectedIndexChanged += cmbColor_SelectedIndexChanged; 
             cmbColor.SelectedIndex = 0;  // 기본값: Black
@@ -54,6 +56,49 @@ namespace SimplePaint
 
 
       }
+
+        private void btnSaveFile_Click(object sender, EventArgs e)
+        {
+            if (canvasBitmap == null)
+            {
+                MessageBox.Show("저장할 그림이 없습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "PNG (*.png)|*.png|JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|Bitmap (*.bmp)|*.bmp";
+                sfd.DefaultExt = "png";
+                sfd.AddExtension = true;
+
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+
+                ImageFormat fmt = ImageFormat.Png;
+                string ext = Path.GetExtension(sfd.FileName).ToLowerInvariant();
+                switch (ext)
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                        fmt = ImageFormat.Jpeg; break;
+                    case ".bmp":
+                        fmt = ImageFormat.Bmp; break;
+                    default:
+                        if (sfd.FilterIndex == 2) fmt = ImageFormat.Jpeg;
+                        else if (sfd.FilterIndex == 3) fmt = ImageFormat.Bmp;
+                        else fmt = ImageFormat.Png;
+                        break;
+                }
+
+                try
+                {
+                    canvasBitmap.Save(sfd.FileName, fmt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"파일 저장 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         private void PicCanvas_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;             // 드래그시작
